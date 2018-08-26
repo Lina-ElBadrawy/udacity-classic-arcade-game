@@ -10,6 +10,10 @@ class Entity {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+    reset(x,y){
+        this.x=x;
+        this.y=y;
+    }
 }
 
 
@@ -29,7 +33,11 @@ class Enemy extends Entity {
         // which will ensure the game runs at the same speed for
         // all computers.
         this.x += this.x * (this.speed * dt);
+        if(this.x==1000){
+            super.reset();
+        }
     };
+   
 
     // Draw the enemy on the screen, required method for game
     render() {
@@ -46,17 +54,44 @@ class Player extends Entity {
     constructor(x = 200, y = 400, speed = 1, sprite = 'images/char-boy.png') {
         super(x, y, speed, sprite);
     }
-    update() {
+    update() {        
         this.y -= 1 * (this.speed);
+       
+        if(this.y<=0){
+            super.reset(200,400);
+        }
 
     }
     render() {
         super.render();
 
     }
-    handleInput() {
+    handleInput(keycode) {
+        switch(keycode){
+            case 'right':
+            if(this.x<400)
+            this.x+=20*this.speed;
+            break;         
+            case 'left':
+            if(this.x>0)
+            this.x-=20*this.speed;
+            break
+            case 'up':
+            if(this.y>0)
+            this.y-=20*this.speed;
+            break
+            case 'down':
+            if(this.y<400)
+            this.y+=20*this.speed;
+            break
+            default:
+            break;
+            
+        }
+       
 
     }
+   
 }
 
 // Now instantiate your objects.

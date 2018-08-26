@@ -59,7 +59,7 @@ for(var i=0;i<3;i++){
     let x=Math.floor(Math.random()*2)+1;  
     let y=Math.floor(Math.random() * 3)+1;  
     console.log(x,y,speed)
-    allEnemies.push(new Enemy(x,((y+1)*100),speed));
+    allEnemies.push(new Enemy(x,((y+1)*83),speed));
 }
 console.log(allEnemies)
 const player=new Player(200,400);

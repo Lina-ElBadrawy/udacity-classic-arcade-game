@@ -79,7 +79,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -94,6 +94,10 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+    function checkCollisions(){
+      
+        
     }
 
     /* This function initially draws the "game level", it will then call
@@ -182,7 +186,9 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-    debugger;
+
+    
+   
     function getCanvesCoordinates(){
         return {
             x: evt.clientX - rect.left,
