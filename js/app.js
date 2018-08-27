@@ -53,7 +53,7 @@ class Enemy extends Entity {
 // a handleInput() method.
 
 class Player extends Entity {
-    constructor(x = 200, y = 400, speed = 2, sprite = 'images/char-boy.png') {
+    constructor(x = 200, y = 400, speed = 1, sprite = 'images/char-boy.png') {
         super(x, y, speed, sprite);
     }
     update() {        
@@ -104,7 +104,7 @@ function playAgain(){
 function createEnemies(){
     for (var i = 0; i < 3; i++) {
         let speed = Math.floor(Math.random() * 4) + 1;
-        let x = Math.floor(Math.random() * 2) + 1;
+        let x = 1;
         let y = Math.floor(Math.random() * 3) ;
       //  console.log(x, y, speed)
         allEnemies.push(new Enemy(x, ((y + 1) * 83)-15, speed));
