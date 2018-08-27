@@ -57,7 +57,10 @@ var Engine = (function(global) {
          */
         win.requestAnimationFrame(main);
     }
-
+    function playAgain(){      
+        init();
+    
+    }
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
      * game loop.
@@ -79,7 +82,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions();
+       
     }
 
     /* This is called by the update function and loops through all of the
@@ -94,10 +97,6 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
-    }
-    function checkCollisions(){
-      
-        
     }
 
     /* This function initially draws the "game level", it will then call
@@ -166,6 +165,7 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        document.getElementById("win-wrapper").classList.add("hide");
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -186,27 +186,8 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-
-    
-   
-    function getCanvesCoordinates(){
-        return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
-          };
-        
-        var canvas = document.getElementById('myCanvas');
-        var context = canvas.getContext('2d');
+    global.playAgain=playAgain
   
-        canvas.addEventListener('mousemove', function(evt) {
-          var mousePos = getMousePos(canvas, evt);
-          var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-          writeMessage(canvas, message);
-        }, false);
    
-        
-    }
-    ctx.onmouseover=function(x,y){
-        debugger;
-    }
+   
 })(this);
