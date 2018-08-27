@@ -57,7 +57,8 @@ var Engine = (function(global) {
          */
         win.requestAnimationFrame(main);
     }
-    function playAgain(){      
+    function playAgain(){
+       
         init();
     
     }
@@ -166,6 +167,7 @@ var Engine = (function(global) {
     function reset() {
         // noop
         document.getElementById("win-wrapper").classList.add("hide");
+        player.reset(200,400);
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -186,7 +188,7 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-    global.playAgain=playAgain
+    global.init=init;
   
    
    

@@ -53,7 +53,7 @@ class Enemy extends Entity {
 // a handleInput() method.
 
 class Player extends Entity {
-    constructor(x = 200, y = 400, speed = 1, sprite = 'images/char-boy.png') {
+    constructor(x = 200, y = 400, speed = 2, sprite = 'images/char-boy.png') {
         super(x, y, speed, sprite);
     }
     update() {        
@@ -61,7 +61,7 @@ class Player extends Entity {
         
         if(this.y<=0){
             document.getElementById("win-wrapper").classList.remove("hide");
-            clearInterval(interval);
+            //clearInterval(interval);
             super.reset(200,200);
         }
 
@@ -73,19 +73,19 @@ class Player extends Entity {
         switch(keycode){
             case 'right':
             if(this.x<400)
-            this.x+=20*this.speed;
+            this.x+=30*this.speed;
             break;         
             case 'left':
             if(this.x>0)
-            this.x-=20*this.speed;
+            this.x-=30*this.speed;
             break
             case 'up':
             if(this.y>0)
-            this.y-=20*this.speed;
+            this.y-=30*this.speed;
             break
             case 'down':
             if(this.y<400)
-            this.y+=20*this.speed;
+            this.y+=30*this.speed;
             break
             default:
             break;
@@ -96,7 +96,11 @@ class Player extends Entity {
     }
    
 }
-
+function playAgain(){      
+    init();
+    
+    
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
