@@ -25,7 +25,6 @@ class Entity {
     }
 }
 
-
 class Enemy extends Entity {
     constructor(x = 0, y = 0, speed = 1, sprite = 'images/enemy-bug.png') {
         super(x, y, speed, sprite);
@@ -45,7 +44,6 @@ class Enemy extends Entity {
     render() {
         super.render();
     };
-
 };
 
 class Player extends Entity {
@@ -81,16 +79,12 @@ class Player extends Entity {
                 break
             default:
                 break;
-
         }
-
     }
-
 }
 //Restart the game
 function playAgain() {
     init();
-
 }
 //Prepare Enemies with random locations and speed
 function createEnemies() {
