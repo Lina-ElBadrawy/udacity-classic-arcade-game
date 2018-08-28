@@ -1,22 +1,29 @@
 "use strict";
+//Parent Class
 class Entity {
     constructor(x = 0, y = 0, speed = 1, sprite = 'images/enemy-bug.png') {
+        //entity x location
         this.x = x;
+        //entity y location
         this.y = y;
+        //entity speed
         this.speed = speed;
+        //entity character image
         this.sprite = sprite;
     }
+    //update entity location 
     update(dt = {}) {
     }
+    //draw entity in the initial location
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+    //reset entity to the default position
     reset(x,y){
         this.x=x;
         this.y=y;
     }
 }
-
 
 
 class Enemy extends Entity {
@@ -92,12 +99,12 @@ function createEnemies(){
         let speed = Math.floor(Math.random() * 4) + 1;
         let x = 1;
         let y = Math.floor(Math.random() * 3) ;
-      //  console.log(x, y, speed)
         allEnemies.push(new Enemy(x, ((y + 1) * 83)-15, speed));
         }
 }
 const allEnemies = new Array();
 createEnemies();
+//create enemies on timely interval
 let interval = setInterval(function(){
     createEnemies();    
 }, 3000);
