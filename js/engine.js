@@ -58,9 +58,7 @@ var Engine = (function(global) {
         win.requestAnimationFrame(main);
     }
     function playAgain(){
-       
-        init();
-    
+        init();    
     }
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -189,7 +187,4 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
     global.init=init;
-  
-   
-   
 })(this);
