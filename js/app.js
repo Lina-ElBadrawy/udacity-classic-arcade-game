@@ -56,7 +56,7 @@ class Player extends Entity {
         super(x, y, speed, sprite);
     }
     update() {        
-        if(this.y<=0){
+        if(this.y<=-15){
             document.getElementById("win-wrapper").classList.remove("hide");
             super.reset(200,200);
         }
