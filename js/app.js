@@ -19,28 +19,27 @@ class Entity {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     //reset entity to the default position
-    reset(x,y){
-        this.x=x;
-        this.y=y;
+    reset(x, y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
 
 class Enemy extends Entity {
     constructor(x = 0, y = 0, speed = 1, sprite = 'images/enemy-bug.png') {
-       super(x,y,speed,sprite);
+        super(x, y, speed, sprite);
     }
     // Update the enemy's position
     // Parameter: dt, a time delta between ticks
     update(dt) {
-     // Detect collision if the enemy in area range of the player
-        if(Math.abs(player.x-this.x)<=20 && Math.abs(player.y-this.y)<50){
-            setTimeout(() => {
-                //Resets the player to the start position
-                player.reset(200,400);                
-            }, 500);            
-        }    
-        this.x += this.x * (this.speed * dt);      
+        // Detect collision if the enemy in area range of the player
+        if (Math.abs(player.x - this.x) <= 20 && Math.abs(player.y - this.y) < 50) {
+            //Resets the player to the start position
+            player.reset(200, 400);
+
+        }
+        this.x += this.x * (this.speed * dt);
     };
     // Draw the enemy on the screen
     render() {
@@ -54,11 +53,11 @@ class Player extends Entity {
         super(x, y, speed, sprite);
     }
     // Update the player's position
-    update() {    
+    update() {
         //Check if the Player reached the water, the game should rest and winner popup appears
-        if(this.y<=-15){            
+        if (this.y <= -15) {
             document.getElementById("win-wrapper").classList.remove("hide");
-            super.reset(200,200);
+            super.reset(200, 200);
         }
     }
     //Draw the player on the screen
@@ -67,46 +66,46 @@ class Player extends Entity {
     }
     //Handle the keboard navigation arrows to move the player on the allowed area on the screen
     handleInput(keycode) {
-        switch(keycode){
+        switch (keycode) {
             case 'right':
-            (this.x<400)?this.x+=30*this.speed:this.x;
-            break;         
+                (this.x < 400) ? this.x += 30 * this.speed : this.x;
+                break;
             case 'left':
-            (this.x>0)?this.x-=30*this.speed:this.x;
-            break
+                (this.x > 0) ? this.x -= 30 * this.speed : this.x;
+                break
             case 'up':
-            (this.y>0)?this.y-=30*this.speed:this.y;
-            break
+                (this.y > 0) ? this.y -= 30 * this.speed : this.y;
+                break
             case 'down':
-            (this.y<400)?this.y+=30*this.speed:this.y;
-            break
+                (this.y < 400) ? this.y += 30 * this.speed : this.y;
+                break
             default:
-            break;
-            
-        }      
+                break;
+
+        }
 
     }
-   
+
 }
 //Restart the game
-function playAgain(){      
-    init();   
-    
+function playAgain() {
+    init();
+
 }
 //Prepare Enemies with random locations and speed
-function createEnemies(){
+function createEnemies() {
     for (var i = 0; i < 3; i++) {
         let speed = Math.floor(Math.random() * 4) + 1;
         let x = 1;
-        let y = Math.floor(Math.random() * 3) ;
-        allEnemies.push(new Enemy(x, ((y + 1) * 83)-15, speed));
-        }
+        let y = Math.floor(Math.random() * 3);
+        allEnemies.push(new Enemy(x, ((y + 1) * 83) - 15, speed));
+    }
 }
 const allEnemies = new Array();
 createEnemies();
 //create enemies on timely interval
-let interval = setInterval(function(){
-    createEnemies();    
+let interval = setInterval(function () {
+    createEnemies();
 }, 3000);
 const player = new Player();
 
