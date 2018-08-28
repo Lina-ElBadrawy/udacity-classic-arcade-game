@@ -57,6 +57,7 @@ class Player extends Entity {
     }
     update() {        
         if(this.y<=-15){
+            
             document.getElementById("win-wrapper").classList.remove("hide");
             super.reset(200,200);
         }
