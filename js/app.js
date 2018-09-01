@@ -33,7 +33,7 @@ class Enemy extends Entity {
     // Parameter: dt, a time delta between ticks
     update(dt) {
         // Detect collision if the enemy in area range of the player
-        if (Math.abs(player.x - this.x) <= 20 && Math.abs(player.y - this.y) < 50) {
+        if (Math.abs(player.x - this.x) <= 45 && Math.abs(player.y - this.y) <= 65) {
             //Resets the player to the start position
             player.reset(200, 400);
 
