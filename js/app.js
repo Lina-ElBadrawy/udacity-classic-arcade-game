@@ -33,7 +33,7 @@ class Enemy extends Entity {
     // Parameter: dt, a time delta between ticks
     update(dt) {
         // Detect collision if the enemy in area range of the player
-        if (Math.abs(player.x - this.x) <= 45 && Math.abs(player.y - this.y) <= 65) {
+        if (Math.abs(player.x - this.x) <= 50 && Math.abs(player.y - this.y) <= 65) {
             //Resets the player to the start position
             player.reset(200, 400);
 
@@ -89,7 +89,7 @@ function playAgain() {
 //Prepare Enemies with random locations and speed
 function createEnemies() {
     for (var i = 0; i < 3; i++) {
-        let speed = Math.floor(Math.random() * 4) + 1;
+         let speed = Math.floor(Math.random() * 4) + 1;
         let x = 1;
         let y = Math.floor(Math.random() * 3);
         allEnemies.push(new Enemy(x, ((y + 1) * 83) - 15, speed));
